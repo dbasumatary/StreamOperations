@@ -97,9 +97,30 @@ public class StreamOperations {
         System.out.println("Maximum number in the stream : " + maximum);
     }
 
+    //UC-2.7: Find sum and average of the number stream
+    public void findSumAndAverage() {
+        ArrayList<Integer> arrayInteger = new ArrayList<>();
+        arrayInteger.add(5);
+        arrayInteger.add(3);
+        arrayInteger.add(11);
+
+        // Create a stream of integers from the list
+        Stream<Integer> integerStream = arrayInteger.stream();
+
+        // Use count() and reduce() to find the sum and average of the stream
+        long count = integerStream.count();
+        int sum = arrayInteger.stream().reduce(0, Integer::sum);
+        double average = sum / (double) count;
+
+        // Print the results to the console
+        System.out.println("Sum of the numbers: " + sum);
+        System.out.println("Average of the numbers: " + average);
+    }
+
+
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.findMinMax();
+        streamTest.findSumAndAverage();
     }
 }
 
