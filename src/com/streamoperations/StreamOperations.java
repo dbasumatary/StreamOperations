@@ -1,5 +1,6 @@
 package com.streamoperations;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,7 +19,6 @@ public class StreamOperations {
         arrayList.stream().forEach(a-> System.out.print(a + " "));
     }
 
-
     //UC-2.2: Transform each element to double and store the result
 
     public void elementDouble(){
@@ -32,7 +32,6 @@ public class StreamOperations {
         System.out.println("\nThe numbers are transformed to double:");
         array_double.forEach(a -> System.out.print(a + " "));
     }
-
 
     //UC-2.3: Store transformed double value into a new list
     public void elementStoreInArray(){
@@ -51,9 +50,19 @@ public class StreamOperations {
         newList.forEach(a -> System.out.print(a + " "));
     }
 
+
+    //UC-2.4: Filter the even numbers from the stream and store the result in list
+    public void filterEvenNumberAndStore(){
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+        //Using filter to write the expression
+        List<Integer> listEven = list.stream().filter(number -> (number % 2 == 0)).collect(Collectors.toList());
+        listEven.forEach(number -> System.out.print(number + " "));
+    }
+
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.elementStoreInArray();
+        streamTest.filterEvenNumberAndStore();
     }
 }
 
