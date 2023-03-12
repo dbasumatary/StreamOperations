@@ -133,9 +133,21 @@ public class StreamOperations {
         System.out.println("Are none of the numbers even: " + noneEven);
     }
 
+    //UC-.9: Sort number stream in ascending order
+    public void sortAscending() {
+        List<Integer> arrayInteger = Arrays.asList(43,21,67,32,9);
+
+        // Create a stream of integers from the list and sort it in ascending order
+        Stream<Integer> integerStream = arrayInteger.stream().sorted();
+
+        // Print the sorted stream to the console
+        System.out.println("Ascending order:");
+        integerStream.forEach(i -> System.out.print(i + " "));
+    }
+
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.checkAllOrAtLeastOneEven();
+        streamTest.sortAscending();
     }
 }
 
