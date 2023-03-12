@@ -118,9 +118,24 @@ public class StreamOperations {
     }
 
 
+    //UC-2.8: Find all the number or at least one number is even in the number stream
+    public void checkAllOrAtLeastOneEven() {
+        List<Integer> arrayInteger = Arrays.asList(2,5,14,17,24);
+
+        // Use allMatch(), anyMatch(), and noneMatch() to check if all, at least one, or none of the numbers are even
+        boolean allEven = arrayInteger.stream().allMatch(i -> i % 2 == 0);
+        boolean anyEven = arrayInteger.stream().anyMatch(i -> i % 2 == 0);
+        boolean noneEven = arrayInteger.stream().noneMatch(i -> i % 2 == 0);
+
+        // Print the results to the console
+        System.out.println("Are all the numbers even: " + allEven);
+        System.out.println("Are any of the numbers even: " + anyEven);
+        System.out.println("Are none of the numbers even: " + noneEven);
+    }
+
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.findSumAndAverage();
+        streamTest.checkAllOrAtLeastOneEven();
     }
 }
 
