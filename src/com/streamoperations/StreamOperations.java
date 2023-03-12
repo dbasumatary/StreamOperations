@@ -1,10 +1,7 @@
 package com.streamoperations;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.Optional;
 
 public class StreamOperations {
 
@@ -63,16 +60,46 @@ public class StreamOperations {
 
 
    //UC-2.5: Peek and show first even number in the number stream
-    public void peekShowFirstEven(){
-        List<Integer> list_int = Arrays.asList(1,2,3,4,5,6,7,8,9);
-        Optional<Integer> firstEven = list_int.stream().filter(num -> num%2==0)
-                                           .peek(n-> System.out.println("First even number: " + n))
-                                           .findFirst();
-        }
+    public void findFirstEven() {
+        ArrayList<Integer> arrayInteger = new ArrayList<>();
+        arrayInteger.add(5);
+        arrayInteger.add(3);
+        arrayInteger.add(11);
+        arrayInteger.add(2);
+        arrayInteger.add(8);
+
+        // Create a stream of integers from the list
+        Stream<Integer> integerStream = arrayInteger.stream();
+
+        // Use findFirst() and filter() to find the first even number in the stream
+        Integer firstEven = integerStream.filter(n -> n % 2 == 0).findFirst().orElse(null);
+
+        // Print the result to the console
+        System.out.println("First even number: " + firstEven);
+    }
+
+    //UC-2.6: Find minimum and maximum number in the number stream
+    public void findMinMax() {
+        ArrayList<Integer> arrayInteger = new ArrayList<>();
+        arrayInteger.add(5);
+        arrayInteger.add(3);
+        arrayInteger.add(11);
+
+        // Create a stream of integers from the list
+        Stream<Integer> integerStream = arrayInteger.stream();
+
+        // Use min() and max() to find the minimum and maximum values in the stream
+        Integer minimum = integerStream.min(Integer::compareTo).orElse(null);
+        Integer maximum = arrayInteger.stream().max(Integer::compareTo).orElse(null);
+
+        // Print the results to the console
+        System.out.println("Minimum number in the stream : " + minimum);
+        System.out.println("Maximum number in the stream : " + maximum);
+    }
 
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.peekShowFirstEven();
+        streamTest.findMinMax();
     }
 }
 
