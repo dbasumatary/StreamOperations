@@ -1,5 +1,7 @@
 package com.streamoperations;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamOperations {
@@ -26,16 +28,32 @@ public class StreamOperations {
         arrayInteger.add((11));
 
         //Using map() to perform an operation to double each element
-        Stream<Double> arr_double = arrayInteger.stream().map(a -> a.doubleValue());
+        Stream<Double> array_double = arrayInteger.stream().map(a -> a.doubleValue());
         System.out.println("\nThe numbers are transformed to double:");
-        arr_double.forEach(a -> System.out.print(a + " "));
+        array_double.forEach(a -> System.out.print(a + " "));
+    }
+
+
+    //UC-2.3: Store transformed double value into a new list
+    public void elementStoreInArray(){
+        ArrayList<Integer> arrayInteger = new ArrayList<>();
+        arrayInteger.add(5);
+        arrayInteger.add(3);
+        arrayInteger.add((11));
+
+        //Using map() to perform an operation to double each element
+        Stream<Double> array_double = arrayInteger.stream().map(a -> a.doubleValue());
+
+        //Using collect() to store the transformed values in a new list
+        List<Double> newList = array_double.collect(Collectors.toList());
+
+        System.out.println("\nThe numbers that are transformed to double and stored in a new list:");
+        newList.forEach(a -> System.out.print(a + " "));
     }
 
     public static void main(String[] args) {
         StreamOperations streamTest = new StreamOperations();
-        streamTest.createIterateStream();
-        System.out.println();
-        streamTest.elementDouble();
+        streamTest.elementStoreInArray();
     }
 }
 
